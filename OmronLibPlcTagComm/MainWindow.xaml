@@ -33,7 +33,19 @@
                         Text="{Binding PlcIpAddress}"
                         TextWrapping="NoWrap" />
                     <Rectangle MinWidth="20" />
-                    <Button MinWidth="100" Command="{Binding ConnectCommand}">Connect</Button>
+
+                </StackPanel>
+            </Border>
+
+            <Border BorderBrush="Black" BorderThickness="1">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock MinWidth="110" Text="Variable Type" />
+                    <ComboBox
+                        MinWidth="200"
+                        ItemsSource="{Binding PlcVariableTypes}"
+                        SelectedItem="{Binding PlcVariableType}" />
+                    <Rectangle MinWidth="20" />
+
                 </StackPanel>
             </Border>
 
