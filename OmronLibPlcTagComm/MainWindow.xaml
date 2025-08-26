@@ -1,0 +1,93 @@
+﻿<Window
+    x:Class="OmronLibPlcTagComm.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:OmronLibPlcTagComm"
+    xmlns:localVM="clr-namespace:OmronLibPlcTagComm.ViewModels"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    Loaded="Window_Loaded"
+    mc:Ignorable="d">
+
+    <Window.DataContext>
+        <localVM:MainWindow_VM />
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Vertical">
+
+            <Border BorderBrush="Black" BorderThickness="1">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock MinWidth="110" Text="Plc Ip Address" />
+                    <TextBox
+                        MinWidth="200"
+                        MaxLines="1"
+                        Text="{Binding PlcIpAddress}"
+                        TextWrapping="NoWrap" />
+                    <Rectangle MinWidth="20" />
+                    <Button MinWidth="100" Command="{Binding ConnectCommand}">Connect</Button>
+                </StackPanel>
+            </Border>
+
+            <Border BorderBrush="Black" BorderThickness="1">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock MinWidth="110" Text="Plc Variable Name" />
+                    <TextBox
+                        MinWidth="200"
+                        MaxLines="1"
+                        Text="{Binding PlcVarName}"
+                        TextWrapping="NoWrap" />
+                    <Rectangle MinWidth="20" />
+                    <Button MinWidth="100" Command="{Binding ReadPlcVarCommand}">ReadValue</Button>
+                    <Rectangle MinWidth="20" />
+                    <TextBox
+                        MinWidth="200"
+                        MaxLines="1"
+                        Text="{Binding ValueReadFromPlc}"
+                        TextWrapping="NoWrap" />
+                </StackPanel>
+            </Border>
+
+            <Border BorderBrush="Black" BorderThickness="1">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock MinWidth="110" Text="Plc Variable Name" />
+                    <TextBox
+                        MinWidth="200"
+                        MaxLines="1"
+                        Text="{Binding PlcVarName}"
+                        TextWrapping="NoWrap" />
+                    <Rectangle MinWidth="20" />
+                    <Button MinWidth="100" Command="{Binding WritePlcVarCommand}">Write Value</Button>
+                    <Rectangle MinWidth="20" />
+                    <TextBox
+                        MinWidth="200"
+                        MaxLines="1"
+                        Text="{Binding ValueWriteToPlc}"
+                        TextWrapping="NoWrap" />
+                </StackPanel>
+            </Border>
+
+        </StackPanel>
+
+        <!--  FOOTER  -->
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="Status:" />
+
+            <TextBox
+                Height="auto"
+                BorderBrush="Black"
+                Text="{Binding StatusText}" />
+
+            <TextBlock Text="{Binding CounterValue}" />
+        </StackPanel>
+
+    </Grid>
+</Window>
